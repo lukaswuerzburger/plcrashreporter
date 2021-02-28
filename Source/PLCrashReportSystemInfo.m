@@ -40,15 +40,20 @@
  * The current host's operating system.
  */
 PLCrashReportOperatingSystem PLCrashReportHostOperatingSystem =
-// FIXME: Deprecated, use TARGET_OS_SIMULATOR
-#if TARGET_IPHONE_SIMULATOR
-    PLCrashReportOperatingSystemiPhoneSimulator;
-#elif TARGET_OS_TV
-    PLCrashReportOperatingSystemAppleTVOS;
-#elif TARGET_OS_IPHONE && !TARGET_OS_MACCATALYST
-    PLCrashReportOperatingSystemiPhoneOS;
-#elif TARGET_OS_MAC
-    PLCrashReportOperatingSystemMacOSX;
+#if __APPLE__
+    #if TARGET_OS_SIMULATOR
+        PLCrashReportOperatingSystemiPhoneSimulator;
+    #elif TARGET_OS_TV
+        PLCrashReportOperatingSystemAppleTVOS;
+    #elif TARGET_OS_IPHONE && !TARGET_OS_MACCATALYST
+        PLCrashReportOperatingSystemiPhoneOS;
+    #elif TARGET_OS_MAC
+        PLCrashReportOperatingSystemMacOSX;
+    #else
+        #error Unknown Apple platform
+    #endif
+#elif __linux__
+    PLCrashReportOperatingSystemLinux;
 #else
     #error Unknown operating system
 #endif

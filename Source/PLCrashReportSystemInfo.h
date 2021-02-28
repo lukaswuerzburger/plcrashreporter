@@ -59,7 +59,9 @@ typedef enum {
   
     /** Apple tvOS */
     PLCrashReportOperatingSystemAppleTVOS = 4,
-  
+
+    /** Linux */
+    PLCrashReportOperatingSystemLinux = 5
 } PLCrashReportOperatingSystem;
 
 #pragma clang diagnostic push

@@ -80,6 +80,9 @@ static NSInteger binaryImageSort(id binary1, id binary2, void *context);
         case PLCrashReportOperatingSystemAppleTVOS:
             osName = @"Apple tvOS";
             break;
+        case PLCrashReportOperatingSystemLinux:
+            osName = @"Linux";
+            break;
         default:
             osName = [NSString stringWithFormat: @"Unknown (%d)", report.systemInfo.operatingSystem];
             break;
